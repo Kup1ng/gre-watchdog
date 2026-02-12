@@ -117,6 +117,22 @@ def read_log():
 router = build_router(state, CFG, logger, do_action, read_log)
 app.include_router(router)
 
+from fastapi import Request, HTTPException
+
+@app.post("/cli/action")
+async def cli_action(req: Request):
+    tok = req.headers.get("x-cli-token", "")
+    if not tok or tok != CFG.get("cli_token", ""):
+        raise HTTPException(401, "unauthorized")
+
+    data = await req.json()
+    action = data.get("action")
+    tid = data.get("tunnel_id")
+
+    # reuse same do_action
+    await do_action(action, tid)
+    return {"ok": True, "action": action, "tunnel_id": tid}
+
 @app.on_event("startup")
 async def startup():
     add_event(state, "info", "coordinator started")
