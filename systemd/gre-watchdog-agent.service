@@ -1,0 +1,13 @@
+[Unit]
+Description=GRE Watchdog Agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=/opt/gre-watchdog
+ExecStart=/opt/gre-watchdog/.venv/bin/uvicorn gre_watchdog.agent.main:app --host 0.0.0.0 --port 7801
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
