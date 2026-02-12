@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PY_URL_DEFAULT="http://185.212.50.96/gre-watchdog.py"
-GREWD_URL_DEFAULT="http://185.212.50.96/grewd"
+PY_URL_DEFAULT="https://raw.githubusercontent.com/Kup1ng/gre-watchdog/main/gre-watchdog.py"
+GREWD_URL_DEFAULT="https://raw.githubusercontent.com/Kup1ng/gre-watchdog/main/grewd"
 
 PY_DST="/usr/local/sbin/gre-watchdog.py"
 CLI="/usr/local/sbin/grewd"
