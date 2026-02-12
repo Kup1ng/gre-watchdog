@@ -39,3 +39,5 @@ panel_session_ttl_min: 120
 # state persistence
 state_path: "/var/lib/gre-watchdog/state.json"
 log_dir: "/var/log/gre-watchdog"
+
+cli_token: "CHANGE_ME_LONG_RANDOM"
