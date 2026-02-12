@@ -1,0 +1,18 @@
+role: "kh"
+
+listen_host: "0.0.0.0"
+listen_port: 7801   # خارج از 8000-9000
+
+shared_secret: "CHANGE_ME"
+
+iface_regex: "^gre-kh-(\\d+)$"
+
+# امنیت API agent
+allow_cidrs:
+  - "0.0.0.0/0"   # پیشنهاد: محدودش کن به IP ایران
+max_clock_skew_sec: 45
+
+# idempotency
+idempotency_ttl_sec: 3600
+
+log_dir: "/var/log/gre-watchdog"
