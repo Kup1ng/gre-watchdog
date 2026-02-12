@@ -101,8 +101,6 @@ TIMER_EOF
 reload_and_start() {
   echo "[*] Reloading systemd and enabling timer..."
   systemctl daemon-reload
-  systemctl enable --now gre-watchdog.timer >/dev/null 2>&1 || true
-  systemctl restart gre-watchdog.timer >/dev/null 2>&1 || true
   systemctl reset-failed gre-watchdog.service >/dev/null 2>&1 || true
 }
 
@@ -138,7 +136,7 @@ do_install() {
   echo
   echo "[+] Installed."
   echo "Role: $role"
-  echo "Try: grewd status"
+  echo "Try: grewd start"
 }
 
 do_update() {
